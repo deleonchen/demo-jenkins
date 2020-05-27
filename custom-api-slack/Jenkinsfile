@@ -15,5 +15,8 @@ def jsonParse(def json) {
 }**/
 
 withCredentials([string(credentialsId: 'slack-webhook', variable: 'SECRET')]) { //set SECRET with the credential content
- println("My secret text is '${SECRET}'") 
+ println("My secret text is '${SECRET}'")
 }
+
+// create http POST request to slack
+def resp = httpRequest acceptType: 'APPLICATION_JSON', consoleLogResponseBody: true, contentType: 'APPLICATION_JSON', httpMode: 'POST', requestBody: '{"text": "This is a Groovy generated webhook from Jenkinsfile\\nAnd this is another line of text."}', responseHandle: 'NONE', url: 'https://hooks.slack.com/services/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', wrapAsMultipart: false
