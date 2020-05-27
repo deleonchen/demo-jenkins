@@ -8,8 +8,12 @@ def jsonParse(def json) {
 }
 
 // get the username:password from the Jenkins credentials
-withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '<CREDENTIAL_ID>',
+/**withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '<CREDENTIAL_ID>',
                     usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
    println(env.USERNAME)
    println(env.PASSWORD)
+}**/
+
+withCredentials([string(credentialsId: 'slack-webhook', variable: 'SECRET')]) { //set SECRET with the credential content
+ println("My secret text is '${SECRET}'") 
 }
