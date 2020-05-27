@@ -1,0 +1,15 @@
+ // example of custom API
+import groovy.json.JsonSlurperClassic 
+
+// used to parse any response JSON
+@NonCPS
+def jsonParse(def json) {
+  new groovy.json.JsonSlurperClassic().parseText(json)
+}
+
+// get the username:password from the Jenkins credentials
+withCredentials([[$class: 'UsernamePasswordMultiBinding', credentialsId: '<CREDENTIAL_ID>',
+                    usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD']]) {
+   println(env.USERNAME)
+   println(env.PASSWORD)
+}
