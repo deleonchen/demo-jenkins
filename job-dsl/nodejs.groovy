@@ -1,4 +1,4 @@
-job('NodeJSDemo-created using Groovy') {
+job('NodeJSDemo-Groovy') {
     scm {
         git('git://github.com/deleonchen/docker-demo.git') {  node -> // is hudson.plugins.git.GitSCM
             node / gitConfigName('DSL User')
